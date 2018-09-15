@@ -13,7 +13,7 @@ def main():
     parser.add_argument("-m", "--modelpath", type=str, default=None, required=True, help="Ember model")
     parser.add_argument("binaries", metavar="BINARIES", type=str, nargs="+", help="PE files to classify")
     args = parser.parse_args()
-
+    
     if not os.path.exists(args.modelpath):
         parser.error("ember model {} does not exist".format(args.modelpath))
     lgbm_model = lgb.Booster(model_file=args.modelpath)
