@@ -17,6 +17,8 @@ def main():
     X_test = np.memmap(X_test_path, dtype=np.float32, mode="r", shape=(200000, PEFeatureExtractor.dim))
     y_test = np.memmap(y_test_path, dtype=np.float32, mode="r", shape=200000)
 
+    
+
     feature_vectors = X_test
     
     model_path = "/home/mira/research/dataset/ember/model.txt"
