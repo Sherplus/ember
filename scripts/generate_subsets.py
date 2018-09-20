@@ -12,13 +12,16 @@ subdataset_dir = "/home/mira/research/dataset/ember/subsets/train_test_3k_3k_1k_
 extractor = ember.PEFeatureExtractor()
 
 print("begin to read full dataset")
-X_train, y_train, X_test, y_test = ember.read_vectorized_features(total_data_dir)
-# X_train, y_train = ember.read_vectorized_features(total_data_dir, subset="train")
-# X_test, y_test = ember.read_vectorized_features(data_dir, subset="test")
-# X_test_path = os.path.join(total_data_dir, "X_test.dat")
-# y_test_path = os.path.join(total_data_dir, "y_test.dat")
-# X_test = np.memmap(X_test_path, dtype=np.float32, mode="r", shape=(200000, extractor.dim))
-# y_test = np.memmap(y_test_path, dtype=np.float32, mode="r", shape=200000)
+
+X_train_path = os.path.join(total_data_dir, "X_train.dat")
+y_train_path = os.path.join(total_data_dir, "y_train.dat")
+X_test_path = os.path.join(total_data_dir, "X_test.dat")
+y_test_path = os.path.join(total_data_dir, "y_test.dat")
+
+X_train = np.memmap(X_train_path, dtype=np.float32, mode="r", shape=(600000, extractor.dim))
+y_train = np.memmap(y_train_path, dtype=np.float32, mode="r", shape=600000)
+X_test = np.memmap(X_test_path, dtype=np.float32, mode="r", shape=(200000, extractor.dim))
+y_test = np.memmap(y_test_path, dtype=np.float32, mode="r", shape=200000)
 
 
 print("done reading full dataset, begin segmentation")
