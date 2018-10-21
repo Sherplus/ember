@@ -443,7 +443,8 @@ class PEFeatureExtractor(object):
         ImportsInfo(), ExportsInfo()
     ]
     dim = sum([fe.dim for fe in features])
-
+    
+    # binary -> json
     def raw_features(self, bytez):
         try:
             lief_binary = lief.PE.parse(list(bytez))
@@ -457,9 +458,11 @@ class PEFeatureExtractor(object):
         features.update({fe.name: fe.raw_features(bytez, lief_binary) for fe in self.features})
         return features
 
+    # json -> vector
     def process_raw_features(self, raw_obj):
         feature_vectors = [fe.process_raw_features(raw_obj[fe.name]) for fe in self.features]
         return np.hstack(feature_vectors).astype(np.float32)
 
+    # binary -> vector
     def feature_vector(self, bytez):
         return self.process_raw_features(self.raw_features(bytez))
