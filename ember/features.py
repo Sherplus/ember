@@ -437,7 +437,7 @@ class StringExtractor(FeatureType):
 
 class PEFeatureExtractor(object):
     ''' Extract useful features from a PE file, and return as a vector of fixed size. '''
-
+ 
     features = [
         ByteHistogram(), ByteEntropyHistogram(), StringExtractor(), GeneralFileInfo(), HeaderFileInfo(), SectionInfo(),
         ImportsInfo(), ExportsInfo()
